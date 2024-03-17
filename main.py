@@ -62,12 +62,12 @@ auth_users = [5908818236,5942085615]
 sudo_users = auth_users
 sudo_groups = [-1001850795382]
 
-shell_usage = f"**USAGE:** Executes terminal commands directly via bot.\n\n<pre>/shell pip install requests</pre>"
+shell_usage = f"**USAGE:** Executes terminal commands directly via bot.\n\n<pre>/Start /Caption </pre>"
 def one(user_id):
     if user_id in sudo_users:
         return True
     return False
-@bot.on_message(filters.command(["shell"]))
+@bot.on_message(filters.command(["Start"]))
 async def shell(client, message: Message):
     """
     Executes terminal commands via bot.
@@ -119,7 +119,7 @@ keyboard = InlineKeyboardMarkup(
 )
 
 
-@bot.on_message(filters.command(["pyro"]))
+@bot.on_message(filters.command(["Caption"]))
 async def account_login(bot: Client, m: Message):
 
  editable = await m.reply_text("**Hi Press**\n**Text** = /pro_txt\n**Top** = /pro_top\n**Vision** = /pro_vision\n**Jw** = /pro_jw\n**Olive** = /pro_olive\n**Addapdf** = /adda_pdf")
@@ -134,7 +134,7 @@ async def cancel(_, m):
     return
 
 
-@bot.on_message(filters.command("restart"))
+@bot.on_message(filters.command("Stop"))
 async def restart_handler(_, m):
     await m.reply_text("Restarted!", True)
     os.execl(sys.executable, sys.executable, *sys.argv)
